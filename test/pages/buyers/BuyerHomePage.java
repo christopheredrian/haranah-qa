@@ -1,6 +1,5 @@
 package pages.buyers;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,7 +10,7 @@ import org.openqa.selenium.support.FindBy;
  */
 public class BuyerHomePage {
 
-    private WebDriver driver;
+    private final WebDriver driver;
     @FindBy(css = ".alert.alert-danger")
     private WebElement header;
 
