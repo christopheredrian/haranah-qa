@@ -22,28 +22,26 @@ public class LoginPage {
     private WebElement email;
     @FindBy(how = How.NAME, using = "password") 
     private WebElement password;
+    @FindBy(how = How.CSS, using = ".alert.alert-danger")
+    private WebElement errorMessage;
     
     /**
-     * Click the login button
+     * Set the email and password after which, submit the form
+     * @param email
+     * @param password
      */
-    public void login(){
-        email.submit();
+    public void login(String email, String password){
+        this.email.sendKeys(email);
+        this.password.sendKeys(password);
+        this.email.submit();
     }
     
     /**
-     * Set email for form
-     * @param e string to set
+     * Returns the error message
+     * @return 
      */
-    public void setEmail(String e){
-        email.sendKeys(e);
-    }
-    
-    /**
-     * Set password for form
-     * @param p 
-     */
-    public void setPassword(String p){
-        password.sendKeys(p);
+    public String getErrorMessage(){
+        return this.errorMessage.getText();
     }
     
 }

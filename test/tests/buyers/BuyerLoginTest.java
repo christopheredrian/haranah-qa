@@ -36,11 +36,9 @@ public class BuyerLoginTest {
 
         // Login Page
         LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
-        loginPage.setEmail("buyer1@gmail.com");
-        loginPage.setPassword("password");
-        loginPage.login();
-        WebElement header = driver.findElement(By.cssSelector("h3"));
-        assertEquals("HARANAH PHITEX", header.getText());
+        loginPage.login("buyer1@gmail.com", "password");
+        BuyerHomePage buyerHomePage = PageFactory.initElements(driver, BuyerHomePage.class);
+        assertEquals("HARANAH PHITEX", buyerHomePage.getHeader());
         driver.close();
     }
 
@@ -54,11 +52,8 @@ public class BuyerLoginTest {
         driver.findElement(By.linkText("Login")).click();
 
         LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
-        loginPage.setEmail("buy1@gmail.com");
-        loginPage.setPassword("failedpassword");
-        loginPage.login();
-        BuyerHomePage buyerHomePage = PageFactory.initElements(driver, BuyerHomePage.class);
-        assertEquals("Invalid Credentials!", buyerHomePage.getHeader());
+        loginPage.login("buy1@gmal.com", "wrongpassword");
+        assertEquals("Error message not equal", "Invalid Credentials!", loginPage.getErrorMessage());
         driver.close();
     }
 }

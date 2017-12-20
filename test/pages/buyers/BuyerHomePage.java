@@ -11,7 +11,7 @@ import org.openqa.selenium.support.FindBy;
 public class BuyerHomePage {
 
     private final WebDriver driver;
-    @FindBy(css = ".alert.alert-danger")
+    @FindBy(css = "h3")
     private WebElement header;
 
     public BuyerHomePage(WebDriver driver) {
